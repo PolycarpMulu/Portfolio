@@ -265,3 +265,26 @@ self-assessed numbers, and avoid the honesty traps flagged in §8.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-11 — STEP 8: Contact + Netlify Forms
+
+- `public/__forms.html`: verbatim §7 detection file — `form name="contact"`,
+  `data-netlify`, `netlify-honeypot="bot-field"`, fields form-name/name/email/
+  subject/message/bot-field. Confirmed it exports to `out/__forms.html`.
+- `src/components/sections/Contact.tsx` (client): Netlify Forms via `fetch` to
+  `/__forms.html` (urlencoded) — NO custom API. Fields name/email/subject/message
+  + hidden `bot-field` honeypot; POST keys match the detection file exactly. State:
+  isLoading / isSuccess / error; client validation (all required, email contains
+  "@"). Success replaces the form with `// MESSAGE TRANSMITTED. I'll be in touch.`;
+  failure shows danger text. Styling per §5I (surface inputs, accent focus ring,
+  mono/uppercase/accent labels, accent submit, disabled opacity-50). Social links
+  (GitHub/X/LinkedIn) beside the form; email intentionally not shown (§8 — prefer
+  the form).
+- `page.tsx`: `<Contact/>` after Experience.
+
+**Note:** the form only actually submits on Netlify (the POST 404s locally) — that's
+expected for this static-export + Netlify Forms pattern.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---
