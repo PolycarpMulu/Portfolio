@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# C1rcu1t⤬ — Portfolio
 
-## Getting Started
+Personal portfolio for **Polycarp Mulu** (`C1rcu1t⤬` · `qu35t`) — Cybersecurity
+Researcher / Engineer / Penetration Tester / Red Team Engineer. A fully static,
+single-page site (no backend) with the contact form handled by Netlify Forms.
 
-First, run the development server:
+## Tech stack
+
+| Layer        | Choice                                            |
+| ------------ | ------------------------------------------------- |
+| Framework    | Next.js (App Router) — static export (`output: 'export'`) |
+| Language     | TypeScript                                        |
+| Styling      | Tailwind v4 (CSS-first; tokens in `globals.css @theme`) |
+| Fonts        | next/font — Space Grotesk · Inter · JetBrains Mono |
+| Forms        | Netlify Forms (via `public/__forms.html`)         |
+| Hosting      | Netlify (static)                                   |
+
+> No `tailwind.config.ts`, no database, no server. Content lives as typed config in
+> `src/data/*.ts`.
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build      # static export → out/
+npm run lint       # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The build writes the static site (HTML, assets, `robots.txt`, `sitemap.xml`, OG
+image) to `out/`.
 
-## Learn More
+## Deploy (Netlify)
 
-To learn more about Next.js, take a look at the following resources:
+| Setting           | Value           |
+| ----------------- | --------------- |
+| Build command     | `npm run build` |
+| Publish directory | `out`           |
+| Environment vars  | none            |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Before deploy:** set the production URL in `src/lib/site.ts` (`SITE_URL`) — it
+feeds `metadataBase`, `robots.txt`, `sitemap.xml`, and the OG image.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Forms
 
-## Deploy on Vercel
+Netlify auto-detects `public/__forms.html` at build and registers the `contact`
+form (with a `bot-field` honeypot). Enable email alerts under **Forms → contact →
+notifications** in the Netlify dashboard. The React form in `Contact.tsx` POSTs to
+`/__forms.html`; its field names match the detection file exactly.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project structure (abbreviated)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/            # layout, page, globals.css, robots/sitemap/opengraph-image
+├── components/
+│   ├── layout/     # Navbar, Footer
+│   ├── sections/   # Hero, About, Skills, Projects, Experience, CTF, Writeups, Contact
+│   └── ui/         # CircuitBackground, TerminalText, SkillTag, ProjectCard, …
+├── data/           # bio, skills, projects, experience, ctf, writeups (the "CMS")
+├── hooks/          # useActiveSection, useTerminalType, useRotatingType
+├── lib/            # site.ts (SITE_URL)
+└── types/          # shared TypeScript shapes
+public/
+├── __forms.html    # Netlify Forms detection
+└── assets/         # portrait.jpg
+docs/                # BUILD_SPEC.md, PORTFOLIO_CONTENT.md, DEVLOG.md
+```
+
+## Editing content
+
+All content is typed config under `src/data/`. CTF and Writeups sections self-hide
+while their arrays are empty. Update a `.ts` file and redeploy — no CMS.

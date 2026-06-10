@@ -309,3 +309,27 @@ expected for this static-export + Netlify Forms pattern.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-11 — STEP 10: Assembly + cleanup
+
+- Built the two remaining self-hiding sections:
+  `src/components/sections/CTFAchievements.tsx` (`id="ctf"`, timeline visual like
+  Experience) and `src/components/sections/Writeups.tsx` (`id="writeups"`, card
+  grid). Both `return null` while their data arrays are empty.
+- Finalized `src/app/page.tsx` to the full §5J order: Hero → CredibilityStrip →
+  About → Skills → Projects → Experience → CTF → Writeups → Contact.
+- `layout.tsx` already final (Navbar / main / Footer + metadata); left as-is.
+- Cleanup: removed the five leftover create-next-app SVGs from `public/`
+  (`file/globe/next/vercel/window.svg`, all unreferenced). Confirmed the original
+  root `.jpg` is gone (moved to `public/assets/portrait.jpg` in STEP 2). `public/`
+  now holds only `__forms.html` + `assets/portrait.jpg`.
+- Replaced the default README with a real one (§9): overview, tech-stack table,
+  local dev, build, Netlify settings (publish dir `out`), Forms note, structure,
+  and the `SITE_URL` deploy reminder.
+
+**Note:** the default `src/app/favicon.ico` (Next.js logo) is left in place — no
+brand favicon asset was supplied; swap it when one exists.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---
