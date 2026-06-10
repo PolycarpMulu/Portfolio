@@ -3,6 +3,8 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { bio } from "@/data/bio";
+import { SITE_URL } from "@/lib/site";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -22,9 +24,24 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+const TITLE = `${bio.alias} | ${bio.name}`;
+
 export const metadata: Metadata = {
-  title: "C1rcu1t⤬ | Polycarp",
-  description: "Cybersecurity Engineer — Hardware · Binary · Crypto",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: bio.subline,
+  openGraph: {
+    title: TITLE,
+    description: bio.subline,
+    url: SITE_URL,
+    siteName: bio.alias,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: bio.subline,
+  },
 };
 
 export default function RootLayout({

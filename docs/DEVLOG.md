@@ -288,3 +288,24 @@ expected for this static-export + Netlify Forms pattern.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-11 — STEP 9: SEO (robots, sitemap, OG image, metadata)
+
+- `src/lib/site.ts`: single `SITE_URL` constant. **TODO(deploy):** set to the real
+  production URL — currently a placeholder (`https://c1rcu1t.netlify.app`).
+- `src/app/robots.ts` + `src/app/sitemap.ts`: both with `export const dynamic =
+  "force-static"` (required under `output: 'export'`). Verified they emit
+  `out/robots.txt` (allow all + sitemap URL) and `out/sitemap.xml` (priority 1).
+- `src/app/opengraph-image.tsx`: 1200×630 OG card via `ImageResponse` (next/og),
+  `dynamic = "force-static"`. void bg + accent wordmark + name + subline + meta row.
+  The OG font renderer can't fetch the exotic `⤬` glyph offline, so the card uses
+  `×` in the wordmark only (real `⤬` unchanged across the site). Verified visually.
+- `layout.tsx`: full metadata — `metadataBase`, title `C1rcu1t⤬ | Polycarp Mulu`,
+  description from `bio.subline`, `openGraph` (title/description/url/siteName/type),
+  `twitter` (`summary_large_image`). OG image wired via the file convention.
+- Removed the last transitional `Bio.tagline` (type + data) now that metadata reads
+  `subline`.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---

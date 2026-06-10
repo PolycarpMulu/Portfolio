@@ -36,9 +36,6 @@ export interface Bio {
   /** Credibility strip items (joined by ● nodes in the UI) */
   credibility: string[];
   social: SocialLinks;
-
-  /** @deprecated transitional — layout metadata still reads this; moves to `subline` in STEP 9 */
-  tagline: string;
 }
 
 /** A portfolio project (rendered by ProjectCard, §5F). */
