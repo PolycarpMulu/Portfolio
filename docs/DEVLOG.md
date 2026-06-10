@@ -187,3 +187,25 @@ the established visual language for consistency.
 **Decision to confirm at pause:** keep the two OPTIONAL roles excluded, or add them?
 
 ---
+
+## 2026-06-10 — STEP 5: About + portrait + credibility strip
+
+- `src/components/ui/CredibilityStrip.tsx`: affiliations + focus + location from
+  `bio.credibility`, separated by accent ● nodes; `border-y` band below the hero.
+  No invented metrics.
+- `src/components/sections/About.tsx` (§5D): real bio (`bio.summary`, 3 paragraphs)
+  + a "Current Focus" line; two-column on desktop (text + portrait), stacked on
+  mobile. Framed portrait `/assets/portrait.jpg` (1200×800): `border-border-dim`,
+  `rounded-lg`, accent glow on hover via `shadow-[…var(--color-accent)]`. Plain
+  `<img>` per spec (static export, `images.unoptimized`); `no-img-element` warning
+  suppressed inline with justification. Reduced-motion safe (hover is a transition).
+- `page.tsx`: Hero → CredibilityStrip → About → Experience (review layout for the
+  pause; final order set in STEP 10).
+- Verified the portrait is emitted to `out/assets/portrait.jpg` on build.
+
+**Why:** establishes the personal narrative + visual identity and the honest
+credibility row before the remaining content sections.
+
+**Key commands:** `npm run build` · `npm run lint` · `npm run dev`
+
+---

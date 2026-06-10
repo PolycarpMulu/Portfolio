@@ -1,4 +1,6 @@
 import Hero from "@/components/sections/Hero";
+import CredibilityStrip from "@/components/ui/CredibilityStrip";
+import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 
 // Section order is finalized in STEP 10 (Hero → About → Skills → Projects →
@@ -7,6 +9,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <CredibilityStrip />
+      <About />
       <Experience />
     </>
   );
