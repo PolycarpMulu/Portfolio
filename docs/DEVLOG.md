@@ -250,3 +250,18 @@ self-assessed numbers, and avoid the honesty traps flagged in §8.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-11 — STEP 7: Projects + ProjectCard
+
+- `src/components/ui/ProjectCard.tsx`: card (border-dim/surface, hover accent border)
+  with category + status·year meta, title, description, tag pills (SkillTag), and
+  repo/live links (external, noopener).
+- `src/components/sections/Projects.tsx`: `// PROJECTS` section, responsive grid;
+  renders `projects` from data. Defensive null-return if the array is empty.
+- Per the STEP 5 decision, ships with the single real project (this site); the five
+  named-only §4C lab projects stay excluded.
+- `page.tsx`: `<Projects/>` after Skills.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---
