@@ -12,7 +12,7 @@
 - CircuitBackground is hero-only. All animations must respect prefers-reduced-motion.
 - Any component using Recharts, hooks, or browser APIs starts with "use client".
 - CTF + Writeups sections return null when their data array is empty.
-- Single-page scroll; nav anchors: #about #skills #projects #ctf #writeups #contact.
+- Single-page scroll; nav anchors: #about #skills #projects #experience #ctf #writeups #contact.
 - No component libraries — pure Tailwind + React state.
 - Verify with `npm run build` and `npm run lint` before declaring a milestone done.
 

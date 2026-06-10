@@ -161,3 +161,29 @@ identity and adds the on-brand rotating role + terminal motifs.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-10 — STEP 4: Experience / Education / Certifications section
+
+- `src/data/experience.ts`: security-relevant history from PORTFOLIO_CONTENT §3–§4,
+  in order. **Included:** Cyber Security Engineer @ AfricaHackon (ongoing),
+  Penetration Tester Intern @ Virtually Testing Foundation, Digital Life Associate @
+  The Book Bunk; Technical University of Kenya (Computer Technology, 2016–2021),
+  AfricaHackon training; AfricaHackOn Cyber Security Swara cert. **Excluded** the two
+  OPTIONAL non-security items (Jays Pyrotechnics software dev; Mount Kenya business
+  degree) per STEP 4's "security-relevant only" — easily re-added on request.
+- `src/components/sections/Experience.tsx`: vertical timeline (border-dim rail +
+  accent nodes) grouped under Experience / Education / Certifications sub-labels —
+  reuses the intended CTF timeline visual language. `id="experience"`, py-24.
+- Navbar: added `#experience` link after `projects`.
+- `page.tsx`: renders `<Experience/>` (after Hero for now; final order in STEP 10).
+- Recorded the new section in `docs/BUILD_SPEC.md` (new PROMPT 5K, updated 5J order,
+  §11 checklist, nav-anchor list) and synced the nav-anchor line in CLAUDE.md.
+
+**Why:** a security portfolio needs verifiable career history; the timeline reuses
+the established visual language for consistency.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+**Decision to confirm at pause:** keep the two OPTIONAL roles excluded, or add them?
+
+---

@@ -250,11 +250,28 @@ Beside the form on desktop, render GitHub / X / LinkedIn links from bio.ts.
 Section label: "// CONTACT".
 ```
 
+### PROMPT 5K — Experience / Education / Certifications (added v2.1)
+
+```
+Build src/components/sections/Experience.tsx — a new section (NOT in the original
+spec) capturing the security-relevant career history.
+
+Data: src/data/experience.ts, typed as Experience[] (src/types/index.ts):
+  { title, org, period, location?, kind: "work"|"education"|"certification", points?[] }
+Content source: docs/PORTFOLIO_CONTENT.md §3–§4 (security-relevant only, in order).
+
+Visual: reuse the CTF vertical-timeline language — a left border-dim rail with accent
+nodes; entries grouped under mono/uppercase sub-labels (Experience / Education /
+Certifications). Tokens only. Section: id="experience", py-24, inner max-w-6xl.
+
+Wire into page.tsx after Projects; add the #experience nav link in Navbar.
+```
+
 ### PROMPT 5J — Page Assembly
 
 ```
 Assemble src/app/page.tsx in order:
-Hero → About → Skills → Projects → CTFAchievements → Writeups → Contact
+Hero → About → Skills → Projects → Experience → CTFAchievements → Writeups → Contact
 (CTF and Writeups self-hide when empty.)
 
 Each non-hero section: <section id="..."> with py-24, inner max-w-6xl mx-auto px-4.
@@ -359,7 +376,7 @@ Generate README.md covering:
 - CircuitBackground is hero-only. All animations must respect prefers-reduced-motion.
 - Any component using Recharts, hooks, or browser APIs starts with "use client".
 - CTF + Writeups sections return null when their data array is empty.
-- Single-page scroll; nav anchors: #about #skills #projects #ctf #writeups #contact.
+- Single-page scroll; nav anchors: #about #skills #projects #experience #ctf #writeups #contact.
 - No component libraries — pure Tailwind + React state.
 - Verify with `npm run build` and `npm run lint` before declaring a milestone done.
 ```
@@ -379,6 +396,7 @@ Generate README.md covering:
 [ ] 5F  — Projects + ProjectCard
 [ ] 5G  — CTF (self-hides when empty)
 [ ] 5H  — Writeups (self-hides when empty)
+[ ] 5K  — Experience / Education / Certifications (timeline; #experience nav) [added v2.1]
 [ ] 5I  — Contact (Netlify Forms fetch)
 [ ] 7   — public/__forms.html
 [ ] 8   — robots.ts, sitemap.ts, opengraph-image.tsx, layout metadata

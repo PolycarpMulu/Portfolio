@@ -18,6 +18,7 @@ function buildItems(): NavItem[] {
     { id: "about", label: "about" },
     { id: "skills", label: "skills" },
     { id: "projects", label: "projects" },
+    { id: "experience", label: "experience" },
   ];
   if (ctf.length > 0) items.push({ id: "ctf", label: "ctf" });
   if (writeups.length > 0) items.push({ id: "writeups", label: "writeups" });
