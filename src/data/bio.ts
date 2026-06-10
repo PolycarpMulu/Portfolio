@@ -42,9 +42,7 @@ export const bio: Bio = {
     email: "polycarpmulu@gmail.com",
   },
 
-  // Transitional (consumed by the pre-revision Hero + layout metadata; pruned in STEP 3/9).
-  role: "Cybersecurity Engineer",
-  focus: ["Hardware", "Binary", "Crypto"],
+  // Transitional (layout metadata reads this until STEP 9, then moves to `subline`).
   tagline:
     "Exploring security through research, offensive testing, and continuous learning.",
 };

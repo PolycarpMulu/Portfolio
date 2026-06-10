@@ -37,13 +37,7 @@ export interface Bio {
   credibility: string[];
   social: SocialLinks;
 
-  // --- Transitional fields used by the pre-revision Hero + layout metadata.
-  //     Removed once the Hero is revised (STEP 3) and metadata moves to `subline` (STEP 9).
-  /** @deprecated transitional — use `roles` */
-  role: string;
-  /** @deprecated transitional */
-  focus: string[];
-  /** @deprecated transitional — use `subline` */
+  /** @deprecated transitional — layout metadata still reads this; moves to `subline` in STEP 9 */
   tagline: string;
 }
 

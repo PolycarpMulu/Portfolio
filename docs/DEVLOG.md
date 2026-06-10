@@ -136,3 +136,28 @@ revising the Hero and building the remaining sections.
 **Open item:** five §4C project descriptions/tags needed before STEP 7.
 
 ---
+
+## 2026-06-10 — STEP 3: Hero revision (final copy + rotating roles + terminal status)
+
+- `src/hooks/useRotatingType.ts`: new hook — type → pause → delete → cycle through
+  a word list; reduced-motion renders a single static string (configurable
+  `reducedText`, default words joined by " · "). State mutated only in async
+  callbacks (set-state-in-effect safe). Exposes `reduced` so callers hide the cursor.
+- `src/components/ui/RotatingRoles.tsx` (client): hero role line cycling the four
+  roles in accent mono with a blinking cursor.
+- `src/components/ui/TerminalStatus.tsx` (client): `root@qu35t ~` prompt + rotating
+  status line (decorative, per §8; grounded in real focus areas).
+- Rewrote `src/components/sections/Hero.tsx` to the FINAL copy (§1): label
+  `// INITIALIZING` → name `Polycarp Mulu / C1rcu1t⤬` → headline (the main
+  statement, `text-balance`) → rotating roles → subline → terminal status → CTAs →
+  scroll cue. Static text (name/headline/subline) stays server-rendered for SEO.
+- Pruned transitional `Bio.role` + `Bio.focus` (type + data); kept `tagline`
+  (layout metadata reads it until STEP 9).
+- Fixed `react/jsx-no-comment-textnodes`: `// INITIALIZING` wrapped as a string.
+
+**Why:** the hero shipped with old placeholder copy; this aligns it with the final
+identity and adds the on-brand rotating role + terminal motifs.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---

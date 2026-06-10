@@ -1,47 +1,49 @@
 import CircuitBackground from "@/components/ui/CircuitBackground";
-import TerminalText from "@/components/ui/TerminalText";
+import SectionLabel from "@/components/ui/SectionLabel";
+import RotatingRoles from "@/components/ui/RotatingRoles";
+import TerminalStatus from "@/components/ui/TerminalStatus";
 import { bio } from "@/data/bio";
+
+// Decorative status lines for the terminal flourish (PORTFOLIO_CONTENT §8),
+// grounded in real focus areas — no claimed achievements.
+const STATUS_LINES = [
+  "analyzing firmware…",
+  "hunting TTPs…",
+  "mapping attack surface…",
+  "reviewing exploit paths…",
+  "reading CTI feeds…",
+];
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[90vh] items-center overflow-hidden"
+      className="relative flex min-h-[92vh] items-center overflow-hidden"
     >
       <CircuitBackground />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4">
-        <p className="mb-6 text-sm">
-          <TerminalText text="whoami" prompt="> " speed={75} />
-        </p>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-20">
+        <SectionLabel>{"// INITIALIZING"}</SectionLabel>
 
-        <h1 className="font-display text-4xl font-bold tracking-tight text-fg sm:text-6xl lg:text-7xl">
+        <h2 className="mt-5 font-display text-2xl font-medium text-fg sm:text-3xl">
           {bio.name} <span className="text-accent">/ {bio.alias}</span>
+        </h2>
+
+        <h1 className="mt-3 max-w-4xl text-balance font-display text-3xl font-bold leading-tight tracking-tight text-fg sm:text-5xl lg:text-6xl">
+          {bio.headline}
         </h1>
 
-        <p className="mt-4 font-display text-xl text-muted sm:text-2xl">
-          {bio.role}
+        <p className="mt-6 text-base sm:text-lg">
+          <RotatingRoles words={bio.roles} />
         </p>
 
-        <div className="mt-6 min-h-[1.75rem] text-base text-fg sm:text-lg">
-          <TerminalText
-            text={bio.tagline}
-            prompt="$ "
-            speed={40}
-            startDelay={700}
-          />
-        </div>
+        <p className="mt-4 max-w-2xl font-mono text-sm text-muted sm:text-base">
+          {bio.subline}
+        </p>
 
-        <ul className="mt-8 flex flex-wrap gap-3">
-          {bio.focus.map((f) => (
-            <li
-              key={f}
-              className="border border-border-dim bg-surface px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-muted"
-            >
-              {f}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8">
+          <TerminalStatus prompt={`root@${bio.handle} ~`} statuses={STATUS_LINES} />
+        </div>
 
         <div className="mt-10 flex flex-wrap gap-4">
           <a
