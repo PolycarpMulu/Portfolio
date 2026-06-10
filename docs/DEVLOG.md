@@ -231,3 +231,22 @@ STEP 10 (assembly + cleanup), STEP 11 (testing).
 **State:** all work through STEP 5 committed + pushed to `origin/main`. Branch `main`.
 
 ---
+
+## 2026-06-11 — STEP 6: Skills as Focus Areas
+
+- `src/components/ui/SkillTag.tsx`: small mono pill primitive (border-dim, surface bg).
+- `src/components/sections/Skills.tsx`: Focus Areas as the PRIMARY presentation —
+  five capability cards (title / description / technique chips) from `focusAreas`,
+  card bg surface + border-dim, hover → accent border (§7 visual). Below it, the
+  fuller grouped professional-skills cloud from `skillGroups`
+  (Offensive/Defensive/Automation/GRC/Cloud) rendered as SkillTags. Numeric radar
+  omitted entirely (no Recharts here) per STEP 6. Static server component.
+- `page.tsx`: inserted `<Skills/>` after About (Hero → strip → About → Skills →
+  Experience; final order in STEP 10).
+
+**Why:** capability cards show depth far better than a pill cloud or a radar of
+self-assessed numbers, and avoid the honesty traps flagged in §8.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---
