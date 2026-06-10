@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void:       #0a0a0f;
+  --color-surface:    #1a1a2e;
+  --color-surface-hi: #2d2d4e;
+  --color-accent:     #00ff9c;   /* terminal green / circuit trace */
+  --color-danger:     #ff4b6e;   /* critical badges, errors */
+  --color-muted:      #9aabbd;   /* nudged lighter than v1 #8899AA for WCAG AA on void */
+  --color-fg:         #e8f4f0;
+  --color-border-dim: #2d2d4e;
+
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-body:    var(--font-inter), sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), monospace;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-void); color: var(--color-fg); }
+
+@utility section-label {
+  @apply font-mono text-accent text-xs uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Honor reduced-motion globally — protects the circuit + terminal animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
