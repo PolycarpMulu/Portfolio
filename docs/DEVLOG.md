@@ -209,3 +209,25 @@ credibility row before the remaining content sections.
 **Key commands:** `npm run build` · `npm run lint` · `npm run dev`
 
 ---
+
+## 2026-06-10 — STEP 5 review checkpoint (decisions) + pause
+
+Captured full-page screenshots via system Chrome (puppeteer-core in a throwaway
+`/tmp` dir; project deps untouched) and reviewed Hero + About + Experience at
+1440px, 390px, and reduced-motion. Hierarchy, the long-headline wrap (4 lines on
+mobile), portrait framing, and the reduced-motion static fallback all verified good.
+
+**Decisions (locked):**
+- Experience: keep the two OPTIONAL non-security items excluded (Jays Pyrotechnics
+  software dev; Mount Kenya business degree). No change.
+- Projects: exclude the five named-only §4C lab projects (no source copy in repo);
+  ship Projects with the real portfolio entry only. Updated the `projects.ts` note.
+
+**Next session resumes at:** STEP 6 — Skills as Focus Areas (capability cards
+primary + grouped skills cloud below) + the `SkillTag` primitive. Then STEP 7
+(Projects + ProjectCard), STEP 8 (Contact + `__forms.html`), STEP 9 (SEO),
+STEP 10 (assembly + cleanup), STEP 11 (testing).
+
+**State:** all work through STEP 5 committed + pushed to `origin/main`. Branch `main`.
+
+---
