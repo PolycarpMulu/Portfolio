@@ -333,3 +333,34 @@ brand favicon asset was supplied; swap it when one exists.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-11 — STEP 11: Testing
+
+Built the static export to `out/`, served it with `python3 -m http.server`, and ran
+an automated verification pass (headless Chrome via puppeteer-core in a throwaway
+`/tmp` dir — project deps untouched).
+
+**Results — all pass:**
+- `npm run build` exit 0 (5 routes: `/`, `/_not-found`, `/opengraph-image`,
+  `/robots.txt`, `/sitemap.xml`); `npm run lint` exit 0.
+- Sections render: hero, about, skills, projects, experience, contact all present.
+- CTF + Writeups hidden (empty data) — no `#ctf` / `#writeups` in DOM and no nav
+  links for them.
+- Nav anchors: every `#…` link resolves to an existing element id (navTargetsOk).
+- Images: `/assets/portrait.jpg` loads (naturalWidth > 0).
+- Social links present + correct. HTTP: GitHub `200`, X `200`, LinkedIn `999`
+  (LinkedIn's standard headless-bot block — URL is valid).
+- Mobile @375px: no horizontal overflow (scrollWidth == innerWidth == 375).
+- prefers-reduced-motion: bounce-arrow animation-duration neutralized to `1e-05s`;
+  rotating roles render the static `·`-joined fallback.
+- Console: zero errors, zero failed requests on load.
+- Contact field names (`name`, `email`, `subject`, `message`, `bot-field`) + the
+  POSTed `form-name=contact` match `public/__forms.html` exactly.
+
+**Not run:** the OPTIONAL Playwright smoke test (committed to the repo) — pending the
+go-ahead, since it adds a dependency + browser download.
+
+**Key commands:** `npm run build` · `npm run lint` ·
+`python3 -m http.server 8123 --directory out`
+
+---
