@@ -1,21 +1,50 @@
 import type { Bio } from "@/types";
 
-// Facts below come from BUILD_SPEC. Social URLs, contact email, and the About
-// summary are intentionally left blank — fill with real values (do not fabricate).
-// Empty social strings cause their links to self-hide in Contact/Footer.
+// Real content from docs/PORTFOLIO_CONTENT.md §1 (FINAL — used verbatim).
 export const bio: Bio = {
-  name: "Polycarp",
+  name: "Polycarp Mulu",
   alias: "C1rcu1t⤬",
   handle: "qu35t",
+  location: "Nairobi, Kenya",
+  email: "polycarpmulu@gmail.com",
+
+  headline:
+    "Securing Systems Through Research, Engineering, and Offensive Security",
+  roles: [
+    "Cybersecurity Researcher",
+    "Cybersecurity Engineer",
+    "Penetration Tester",
+    "Red Team Engineer",
+  ],
+  subline:
+    "Exploring security through research, offensive testing, and continuous learning.",
+
+  summary: [
+    "I am a Cybersecurity Researcher, Cybersecurity Engineer, Penetration Tester, and Red Team Engineer focused on understanding how systems can be secured through research, analysis, and practical security testing.",
+    "My work combines offensive and defensive security principles, with an emphasis on continuous learning, hands-on experimentation, and the development of real-world technical skills. I am passionate about exploring modern security challenges, analyzing threats, and improving the resilience of digital systems.",
+    "This portfolio documents my cybersecurity journey, research, technical write-ups, labs, and professional development as I continue building expertise across multiple areas of cybersecurity.",
+  ],
+
+  affiliations: ["AfricaHackon", "Hack The Box Kenya"],
+  currentFocus: "AH200 Cohort 4 · CXD-1 Hardware Platform · HSC CyberLab",
+  credibility: [
+    "AfricaHackon",
+    "Hack The Box Kenya",
+    "AH200 Cohort 4",
+    "HSC CyberLab",
+    "Nairobi, Kenya",
+  ],
+
+  social: {
+    github: "https://github.com/PolycarpMulu",
+    twitter: "https://x.com/C1rcu1tX",
+    linkedin: "https://www.linkedin.com/in/polycarpmulu/",
+    email: "polycarpmulu@gmail.com",
+  },
+
+  // Transitional (consumed by the pre-revision Hero + layout metadata; pruned in STEP 3/9).
   role: "Cybersecurity Engineer",
   focus: ["Hardware", "Binary", "Crypto"],
-  location: "Nairobi, Kenya",
-  tagline: "Cybersecurity Engineer — Hardware · Binary · Crypto",
-  summary: "", // TODO: add real About bio
-  social: {
-    github: "", // TODO: https://github.com/...
-    twitter: "", // TODO: https://x.com/...
-    linkedin: "", // TODO: https://linkedin.com/in/...
-    email: "", // TODO: public contact email
-  },
+  tagline:
+    "Exploring security through research, offensive testing, and continuous learning.",
 };

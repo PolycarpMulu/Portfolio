@@ -107,3 +107,32 @@ a later step per PORTFOLIO_CONTENT §1.)
 **Why:** protect the Hero work and bring GitHub in sync before the v1 push.
 
 ---
+
+## 2026-06-10 — STEP 2: Real data, links, portrait
+
+- Evolved `src/types/index.ts`: expanded `Bio` (headline, roles[], subline,
+  summary[] paragraphs, affiliations, currentFocus, credibility[], email); added
+  `SkillGroup`, `FocusArea`, `Experience` types and a `status?` field on `Project`.
+  Kept three transitional `Bio` fields (`role`/`focus`/`tagline`) so the pre-revision
+  Hero + layout metadata still build; these are pruned in STEP 3/9.
+- `src/data/bio.ts`: real identity + FINAL hero copy + verbatim About bio +
+  affiliations + currentFocus + credibility strip. Real links — GitHub
+  (PolycarpMulu), LinkedIn (polycarpmulu), X (C1rcu1tX), email polycarpmulu@gmail.com.
+- `src/data/skills.ts`: §7 Focus Areas cards (5) + §2 grouped 18-skill arrangement
+  (Offensive/Defensive/Automation/GRC/Cloud). Numeric radar intentionally omitted
+  (per STEP 6).
+- `src/data/projects.ts`: added the one fully-specified real project (this site).
+  The five §4C lab projects are named-only in the docs (descriptions live in a v1
+  doc absent from the repo) — deferred to STEP 7 rather than fabricated.
+- `ctf.ts` / `writeups.ts`: left empty (sections self-hide).
+- Moved `bb07-10-22-0087.jpg → public/assets/portrait.jpg`.
+
+**Why:** swap all placeholder content for real, source-of-truth data before
+revising the Hero and building the remaining sections.
+
+**Key commands:** `git mv bb07-10-22-0087.jpg public/assets/portrait.jpg` ·
+`npm run build` · `npm run lint`
+
+**Open item:** five §4C project descriptions/tags needed before STEP 7.
+
+---

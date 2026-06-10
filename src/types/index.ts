@@ -1,9 +1,7 @@
 // Content model types for the portfolio.
 // All site content lives in src/data/*.ts and is typed against these shapes.
-// Shapes inferred from how BUILD_SPEC §5/§6 components consume the data
-// (the v1 §4A–4E prompts were not available); adjust fields as real data lands.
 
-/** Outbound profile/contact links. Empty string = not set yet (rendered links self-hide). */
+/** Outbound profile/contact links. Empty string = not set (rendered links self-hide). */
 export interface SocialLinks {
   github: string;
   twitter: string; // X
@@ -13,23 +11,40 @@ export interface SocialLinks {
 
 /** Identity + about content. Single source for hero, about, footer, contact, metadata. */
 export interface Bio {
-  /** Real name, e.g. "Polycarp" */
+  /** Real name, e.g. "Polycarp Mulu" */
   name: string;
   /** Primary handle / wordmark, e.g. "C1rcu1t⤬" */
   alias: string;
   /** Secondary handle, e.g. "qu35t" */
   handle: string;
-  /** Role line, e.g. "Cybersecurity Engineer" */
-  role: string;
-  /** Focus areas, e.g. ["Hardware", "Binary", "Crypto"] */
-  focus: string[];
   /** Location, e.g. "Nairobi, Kenya" */
   location: string;
-  /** Short one-liner used in hero + page metadata description */
-  tagline: string;
-  /** Longer About paragraph (markdown-free plain text) */
-  summary: string;
+  /** Public contact email */
+  email: string;
+  /** Hero main statement (display font) */
+  headline: string;
+  /** Rotating hero role line (typed/cycled) */
+  roles: string[];
+  /** Hero subline + page metadata description */
+  subline: string;
+  /** About section bio — one entry per paragraph */
+  summary: string[];
+  /** Community / lab affiliations */
+  affiliations: string[];
+  /** Current focus line, e.g. "AH200 Cohort 4 · CXD-1 ..." */
+  currentFocus: string;
+  /** Credibility strip items (joined by ● nodes in the UI) */
+  credibility: string[];
   social: SocialLinks;
+
+  // --- Transitional fields used by the pre-revision Hero + layout metadata.
+  //     Removed once the Hero is revised (STEP 3) and metadata moves to `subline` (STEP 9).
+  /** @deprecated transitional — use `roles` */
+  role: string;
+  /** @deprecated transitional */
+  focus: string[];
+  /** @deprecated transitional — use `subline` */
+  tagline: string;
 }
 
 /** A portfolio project (rendered by ProjectCard, §5F). */
@@ -40,31 +55,54 @@ export interface Project {
   description: string;
   /** tech/stack tags shown on the card */
   tags: string[];
-  /** domain grouping, e.g. "Hardware" | "Binary" | "Crypto" | "Web" */
+  /** domain grouping, e.g. "Hardware" | "Binary" | "Web · Scripting" */
   category?: string;
+  /** lifecycle, e.g. "active" | "archived" */
+  status?: string;
   /** source repository URL */
   repo?: string;
   /** live demo / external URL */
   demo?: string;
   /** highlight on the grid */
   featured?: boolean;
-  /** completion year */
+  /** completion / start year */
   year?: number;
 }
 
-/** A single skill data point for the Recharts chart (§5E). */
-export interface Skill {
-  /** axis label / chart subject */
+/** A grouped set of professional skills (§2 grouped arrangement). */
+export interface SkillGroup {
+  /** group label, e.g. "Offensive" | "Defensive" | "Automation" | "GRC" | "Cloud" */
   name: string;
-  /** proficiency 0–100 */
-  level: number;
-  /** optional grouping, e.g. "Hardware" | "Binary" | "Crypto" */
-  category?: string;
+  /** skill names in the group */
+  skills: string[];
+}
+
+/** A capability card for the Focus Areas presentation (§7). */
+export interface FocusArea {
+  title: string;
+  description: string;
+  /** technique / tool chips */
+  chips: string[];
+}
+
+/** Experience / education / certification timeline entry (§3–§4). */
+export interface Experience {
+  /** role / qualification title */
+  title: string;
+  /** organisation / institution */
+  org: string;
+  /** human-readable period, e.g. "Oct 2021 – Dec 2021" or "2016 – 2021" */
+  period: string;
+  /** optional location */
+  location?: string;
+  /** kind, used to label/group the timeline */
+  kind: "work" | "education" | "certification";
+  /** bullet details */
+  points?: string[];
 }
 
 /** A CTF result. Section self-hides when the array is empty (§5G). */
 export interface CTF {
-  /** event name */
   name: string;
   team?: string;
   /** ISO date or year string */
