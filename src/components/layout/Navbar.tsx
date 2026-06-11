@@ -19,6 +19,7 @@ function buildItems(): NavItem[] {
     { id: "skills", label: "skills" },
     { id: "projects", label: "projects" },
     { id: "experience", label: "experience" },
+    { id: "terminal", label: "terminal" },
   ];
   if (ctf.length > 0) items.push({ id: "ctf", label: "ctf" });
   if (writeups.length > 0) items.push({ id: "writeups", label: "writeups" });
@@ -41,9 +42,21 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <a
           href="#"
-          className="font-display text-lg font-bold text-fg transition-colors hover:text-accent"
+          className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
+          aria-label={`${bio.alias} — home`}
         >
-          {bio.alias}
+          {/* Plain <img> by design: static export with images.unoptimized. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/logo.png"
+            alt=""
+            width={32}
+            height={32}
+            className="h-8 w-8"
+          />
+          <span className="font-display text-lg font-bold text-fg">
+            {bio.alias}
+          </span>
         </a>
 
         {/* Desktop links */}

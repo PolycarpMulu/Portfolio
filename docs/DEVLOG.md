@@ -364,3 +364,49 @@ go-ahead, since it adds a dependency + browser download.
 `python3 -m http.server 8123 --directory out`
 
 ---
+
+## 2026-06-11 — PART 1: Branding + Security showcase
+
+Source images inspected first (suitability gate). IMG_8657 failed the navbar check
+(dark, opaque, square, detailed → invisible box at 30px); rather than ship it or drop
+Part B, generated edited preview candidates (ImageMagick, in `attachments/_previews/`)
+and the owner picked: **favicon = processed IMG_8656**, **logo = candidate C** (art in
+a rounded accent-bordered badge + `C1rcu1t⤬` wordmark lockup).
+
+**Part A — favicon (IMG_8656):** center-cropped + contrast/brightness/saturation boost.
+Deleted the default `src/app/favicon.ico`; emitted `src/app/icon.png` (512),
+`src/app/apple-icon.png` (180), and a multi-res `favicon.ico` (16/32/48). Reads at
+32px; muddy-but-distinct at 16px (honest limit of a detailed illustration).
+
+**Part B — logo (IMG_8657):** badge mark → `public/assets/logo.png` (128, transparent
+rounded corners). Navbar wordmark replaced with `<img> + C1rcu1t⤬` lockup (h-8, plain
+`<img>`); small badge + a "Hardened: …" line added to the Footer.
+
+**Part C — security showcase:**
+- C1 `public/_headers` (Netlify): X-Frame-Options, X-Content-Type-Options,
+  Referrer-Policy, Permissions-Policy, HSTS (2y, preload), and a CSP
+  (`script/style 'self' 'unsafe-inline'` for Next hydration; `img 'self' data:`;
+  `font/connect 'self'`; `frame-ancestors 'none'`). Emits to `out/_headers`.
+- C2 `public/.well-known/security.txt` (RFC 9116): contact, Expires 2027-06-11,
+  Canonical. Confirmed it exports to `out/.well-known/security.txt`.
+- C3 `Terminal.tsx` (client) — `// TERMINAL` section: command history (↑/↓), `help`,
+  `clear`, `banner`, info commands sourced from `src/data` (whoami/about/skills/
+  projects/experience/contact), and **local** security tools `hash` (SHA-256 / Web
+  Crypto), `b64 enc|dec` (UTF-8), `jwt` (header+payload decode, no signature verify).
+  No eval / no network → CSP-safe. Wired into page + `#terminal` nav link.
+- C4 `ConsoleEgg.tsx` — styled console banner + a base64 challenge that decodes via
+  the site's own `b64 dec` command.
+- C5 Footer "Hardened: CSP · security headers · security.txt" line.
+
+**Local verification (headless, served `out/`):** logo loads; favicon/apple-icon
+linked; terminal present + `#terminal` nav link; **tool correctness** — SHA-256("test")
+matches the known digest, Base64 round-trips, JWT decodes to `John Doe` with the
+no-verify note, ↑ history works; zero console errors. `npm run build` + `npm run lint`
+clean.
+
+**Live securityheaders.com grade:** _pending live measurement after Netlify rebuild_
+(recorded in the next entry).
+
+**Key commands:** `npm run build` · `npm run lint` · ImageMagick `convert`
+
+---
