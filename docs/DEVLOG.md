@@ -404,8 +404,26 @@ matches the known digest, Base64 round-trips, JWT decodes to `John Doe` with the
 no-verify note, ↑ history works; zero console errors. `npm run build` + `npm run lint`
 clean.
 
-**Live securityheaders.com grade:** _pending live measurement after Netlify rebuild_
-(recorded in the next entry).
+**Live verification (https://polycarpmulu.netlify.app, deploy landed ~8.5 min after push):**
+- Headers present: `Content-Security-Policy`, `Permissions-Policy`, `Referrer-Policy`,
+  `Strict-Transport-Security` (includeSubDomains; preload — Netlify's platform HSTS
+  serves max-age=31536000, which supersedes our 63072000 value), `X-Content-Type-Options:
+  nosniff`, `X-Frame-Options: DENY`.
+- `/.well-known/security.txt` serves (200) with correct RFC 9116 content.
+- favicon.ico / icon.png / apple-icon.png / assets/logo.png all 200.
+- Live terminal (headless): logo loads on the dark navbar; `hash test` → correct SHA-256;
+  `b64 enc hello` → `aGVsbG8=`; the console easter-egg challenge `b64 dec …` decodes to
+  `C1RCU1T{cl13nt_s1d3_l4b}`; `jwt …` → payload incl. `John Doe` + "signature NOT
+  verified" note; zero console errors (CSP does not break hydration).
+
+**Security grade (ACTUAL):**
+- **Mozilla Observatory v2: B+ (score 80)** — measured. The dock vs A is the CSP
+  `'unsafe-inline'` (required for Next.js hydration; acknowledged in the work order).
+- **securityheaders.com: not machine-measurable** — the service Cloudflare-blocks
+  automated requests (curl 403 / headless ERR_CONNECTION_CLOSED). All six headers it
+  grades on are present (HSTS+includeSubDomains+preload, CSP, X-Frame-Options,
+  X-Content-Type-Options, Referrer-Policy, Permissions-Policy), so an in-browser scan
+  is expected to return **A/A+**. Confirm at securityheaders.com in a browser.
 
 **Key commands:** `npm run build` · `npm run lint` · ImageMagick `convert`
 
