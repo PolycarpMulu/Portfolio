@@ -4,12 +4,13 @@ import type { Experience } from "@/types";
 // in the documented order. Curation rule: excludes the 2014 cashier / 2015 accounts
 // intern roles. Also omits the two items the source marks OPTIONAL + non-security
 // (Jays Pyrotechnics software dev; Mount Kenya University business degree).
+// Dates intentionally omitted — entries show title + org + description only.
 export const experience: Experience[] = [
   // — Experience —
   {
     title: "Cyber Security Engineer",
     org: "AfricaHackon",
-    period: "Ongoing",
+    period: "",
     kind: "work",
     points: [
       "Cybersecurity engineering and knowledge-sharing within East Africa's premier hacking community.",
@@ -18,18 +19,16 @@ export const experience: Experience[] = [
   {
     title: "Penetration Tester Intern",
     org: "Virtually Testing Foundation",
-    period: "Oct 2021 – Dec 2021",
+    period: "",
     kind: "work",
     points: ["Hands-on penetration testing across web and network targets."],
   },
   {
     title: "Digital Life Associate",
     org: "The Book Bunk",
-    period: "Apr 2022 – Jan 2025",
-    location: "Nairobi, Kenya",
+    period: "",
     kind: "work",
     points: [
-      "Preceded by Intern (Oct 2021 – Mar 2022).",
       "Digital systems and technology work supporting public library restoration.",
     ],
   },
@@ -38,7 +37,7 @@ export const experience: Experience[] = [
   {
     title: "Computer Technology / Computer Systems Technology",
     org: "The Technical University of Kenya",
-    period: "2016 – 2021",
+    period: "",
     kind: "education",
   },
   {

@@ -1,18 +1,8 @@
 import CircuitBackground from "@/components/ui/CircuitBackground";
 import SectionLabel from "@/components/ui/SectionLabel";
 import RotatingRoles from "@/components/ui/RotatingRoles";
-import TerminalStatus from "@/components/ui/TerminalStatus";
+import ScriptedTerminal from "@/components/ui/ScriptedTerminal";
 import { bio } from "@/data/bio";
-
-// Decorative status lines for the terminal flourish (PORTFOLIO_CONTENT §8),
-// grounded in real focus areas — no claimed achievements.
-const STATUS_LINES = [
-  "analyzing firmware…",
-  "hunting TTPs…",
-  "mapping attack surface…",
-  "reviewing exploit paths…",
-  "reading CTI feeds…",
-];
 
 export default function Hero() {
   return (
@@ -42,7 +32,7 @@ export default function Hero() {
         </p>
 
         <div className="mt-8">
-          <TerminalStatus prompt={`root@${bio.handle} ~`} statuses={STATUS_LINES} />
+          <ScriptedTerminal />
         </div>
 
         <div className="mt-10 flex flex-wrap gap-4">

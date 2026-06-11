@@ -4,7 +4,6 @@ import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
-import Terminal from "@/components/sections/Terminal";
 import CTFAchievements from "@/components/sections/CTFAchievements";
 import Writeups from "@/components/sections/Writeups";
 import Contact from "@/components/sections/Contact";
@@ -21,7 +20,6 @@ export default function Home() {
       <Skills />
       <Projects />
       <Experience />
-      <Terminal />
       <CTFAchievements />
       <Writeups />
       <Contact />

@@ -1,24 +1,16 @@
 import { bio } from "@/data/bio";
-
-interface FooterLink {
-  label: string;
-  href: string;
-}
+import { GitHubIcon, XIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 
 export default function Footer() {
   // Baked at build time (static export).
   const year = new Date().getFullYear();
 
   // Only render links that have a real value (empty placeholders self-hide).
-  const links: FooterLink[] = [
-    { label: "GitHub", href: bio.social.github },
-    { label: "X", href: bio.social.twitter },
-    { label: "LinkedIn", href: bio.social.linkedin },
-    {
-      label: "Email",
-      href: bio.social.email ? `mailto:${bio.social.email}` : "",
-    },
-  ].filter((l) => l.href !== "");
+  const socials = [
+    { label: "GitHub", href: bio.social.github, Icon: GitHubIcon },
+    { label: "X", href: bio.social.twitter, Icon: XIcon },
+    { label: "LinkedIn", href: bio.social.linkedin, Icon: LinkedInIcon },
+  ].filter((s) => s.href !== "");
 
   return (
     <footer className="border-t border-border-dim">
@@ -37,17 +29,18 @@ export default function Footer() {
           </p>
         </div>
 
-        {links.length > 0 && (
-          <ul className="flex gap-6">
-            {links.map((l) => (
-              <li key={l.label}>
+        {socials.length > 0 && (
+          <ul className="flex gap-5">
+            {socials.map(({ label, href, Icon }) => (
+              <li key={label}>
                 <a
-                  href={l.href}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
+                  aria-label={label}
+                  className="text-muted transition-colors hover:text-accent"
                 >
-                  {l.label}
+                  <Icon className="h-5 w-5" />
                 </a>
               </li>
             ))}

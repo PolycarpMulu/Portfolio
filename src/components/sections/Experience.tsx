@@ -27,22 +27,14 @@ function TimelineGroup({
               {item.title}
             </p>
             <p className="font-mono text-sm text-accent">{item.org}</p>
-            {(item.period || item.location) && (
-              <p className="mt-0.5 font-mono text-xs text-muted">
-                {[item.period, item.location].filter(Boolean).join(" · ")}
-              </p>
-            )}
             {item.points && item.points.length > 0 && (
-              <ul className="mt-2 space-y-1">
+              <div className="mt-2 space-y-1">
                 {item.points.map((p, j) => (
-                  <li key={j} className="flex gap-2 text-sm text-muted">
-                    <span aria-hidden="true" className="text-accent">
-                      –
-                    </span>
-                    <span>{p}</span>
-                  </li>
+                  <p key={j} className="text-sm text-muted">
+                    {p}
+                  </p>
                 ))}
-              </ul>
+              </div>
             )}
           </li>
         ))}

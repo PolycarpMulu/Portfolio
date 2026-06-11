@@ -6,6 +6,7 @@
   --color-surface-hi: #2d2d4e;
   --color-accent:     #00ff9c;   /* terminal green / circuit trace */
   --color-danger:     #ff4b6e;   /* critical badges, errors */
+  --color-warn:       #f5a524;   /* amber — terminal 'warn' lines (ScriptedTerminal) */
   --color-muted:      #9aabbd;   /* nudged lighter than v1 #8899AA for WCAG AA on void */
   --color-fg:         #e8f4f0;
   --color-border-dim: #2d2d4e;

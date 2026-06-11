@@ -455,3 +455,52 @@ expected A/A+). Unfinished work marked pending (no claims of undone work).
 were edited or overwritten.
 
 ---
+
+## 2026-06-12 — Corrections + scripted terminal (UPDATE_fixes_and_terminal.md)
+
+**PART 1 — five corrections:**
+1. **Contact form removed.** Rewrote `Contact.tsx` to a no-form "Get in touch" block;
+   deleted `public/__forms.html` and all Netlify Forms wiring (`src/lib/api.ts` never
+   existed). Email is **obfuscated** (`polycarpmulu [at] gmail [dot] com`; mailto
+   assembled only on click — not in static HTML). Removed the "Prefer the form…" line.
+   `#contact` anchor kept.
+2. **Experience dates removed.** Emptied all `period` values + dropped the Book Bunk
+   location and the "Preceded by Intern…" note in `experience.ts`; removed the
+   period/location line and the stray leading `–` dash in `Experience.tsx`. Title +
+   org + description only.
+3. **Metadata** — already correct in code (`layout.tsx` uses `bio.subline` for
+   description + openGraph + twitter). Verified the live `<meta>` now reads the new
+   line. (Prior fix had simply never deployed.)
+4. **Credibility strip** — already correct in code (`{i > 0 && ●}` → separators
+   between items only, no leading `●`). Verified live. No change needed.
+5. **Brand icons.** New `BrandIcons.tsx` (inline SVGs, real **X** glyph,
+   `currentColor`, accent on hover). Contact "Elsewhere" = icon + label; footer =
+   icon-only. Each link has an `aria-label`, opens in a new tab with
+   `rel="noopener noreferrer"`.
+
+**PART 2 — scripted terminal (replaces the interactive one):**
+- Removed the type-your-own interactive terminal (`sections/Terminal.tsx`, the
+  `hash`/`b64`/`jwt` lab) + its `#terminal` nav link; replaced the hero `root@qu35t`
+  status flourish (`ui/TerminalStatus.tsx`, now deleted) with `ui/ScriptedTerminal.tsx`.
+- `ScriptedTerminal` (client): auto-types Scene A (HW/Binary/RE) → 3s → Scene B
+  (Red Team) → 3s → shared `whoami` closer → 3s → clears + loops; auto-scrolls.
+  Line classes → tokens (`prompt`/`ok` = accent, `warn` = amber, `err`/`high` =
+  danger, `dim` = muted). Targets are deliberately fictional; tools are real.
+- Requirements met: `prefers-reduced-motion` renders all 21 lines statically (no
+  typing, no loop — verified); IntersectionObserver pauses while off-screen; all
+  timers cleaned up on unmount; `aria-hidden` (decorative, no focus trap); no stat
+  counters.
+- Added one design token `--color-warn` (amber `#f5a524`) to `globals.css @theme` for
+  the required `warn` class — placed in the token layer per the no-hardcoded-hex rule.
+- `ConsoleEgg` hint updated (no longer references the removed `b64`/`hash`/`jwt`
+  commands). Security headers / `security.txt` left untouched.
+
+**Local verification (headless, served `out/`):** no `<form>` / "Send Message" /
+honeypot / "Prefer the form"; email obfuscated; GitHub/X/LinkedIn icons+aria in
+Contact and footer; no Experience dates or leading dash; credibility `●` between-only;
+meta description = subline; scripted terminal present; reduced-motion static (21
+lines, stable); zero console errors. `npm run build` + `npm run lint` clean.
+
+**Key commands:** `npm run build` · `npm run lint`
+
+---
