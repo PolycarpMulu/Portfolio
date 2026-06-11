@@ -428,3 +428,30 @@ clean.
 **Key commands:** `npm run build` · `npm run lint` · ImageMagick `convert`
 
 ---
+
+## 2026-06-11 — PART 2: Notion documentation
+
+Mirrored this project into Notion per `docs/NOTION_DOCS_SPEC.md` (canonical log stays
+here in DEVLOG.md; Notion is the shareable mirror). Notion connector confirmed
+available; the Master Index (`33c5b34f-…`) was **not accessible** to the integration
+(404), so the parent was created **standalone** (move it under the index in the UI).
+
+Created a parent page + **8 sub-pages**, populated from the real sources (DEVLOG.md +
+`git log`, PORTFOLIO_CONTENT.md, UPDATE_branding_security.md, BUILD_SPEC.md). Security
+page records the actual live grade (Observatory B+; securityheaders.com bot-blocked →
+expected A/A+). Unfinished work marked pending (no claims of undone work).
+
+- **Parent — C1rcu1t⤬ Portfolio — Project Documentation:** https://app.notion.com/p/37ce5449dcf581919460cfbf4c199d53
+- 01 · Overview: https://app.notion.com/p/37ce5449dcf5812ba82ffce9a4874a68
+- 02 · Architecture & Decisions: https://app.notion.com/p/37ce5449dcf581f8b728d57e69dd7e28
+- 03 · Development Log: https://app.notion.com/p/37ce5449dcf581f582ddce3104a20741
+- 04 · Content Source-of-Truth: https://app.notion.com/p/37ce5449dcf581dd9f96f59c6e5334de
+- 05 · Security Hardening: https://app.notion.com/p/37ce5449dcf581bf9284e4ee9d3406e3
+- 06 · Build & Deploy Runbook: https://app.notion.com/p/37ce5449dcf5815ba9afcd68c9b26dd8
+- 07 · Backlog & Next Steps: https://app.notion.com/p/37ce5449dcf58128a361eebdc932135d
+- 08 · Branding & Visual Identity: https://app.notion.com/p/37ce5449dcf58147a491e743614fa337
+
+**Notion safety:** only new pages were created under the new parent; no existing pages
+were edited or overwritten.
+
+---
