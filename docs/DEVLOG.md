@@ -567,4 +567,10 @@ desktop links at md+; Projects + Focus Areas cards reflow 1→2→3; skill/tag p
 terminal text stays inside the panel with the scrollbar hidden; background sections stay
 readable at all sizes (no fixed-attachment).
 
+**PART 2 follow-up — added project #7 (Student-Allocation):** owner-supplied description
++ stack — "Secure Flask / Next.js academic workflow platform — JWT auth, RBAC, audit
+logging, document management, project-supervision automation." Tags: Software Development
+· Flask · Next.js · JWT · RBAC. Projects grid now shows all **7**. Link still the GitHub
+profile (repo private); TODO to repoint to `…/Student-Allocation` once public.
+
 ---

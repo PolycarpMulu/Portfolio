@@ -2,11 +2,10 @@ import type { Project } from "@/types";
 
 // Real projects (docs/PORTFOLIO_MASTER_WORKORDER.md PART 2).
 //
-// TODO(links): the Africahackon_Cohort-IV- repo + per-project subfolders are private /
-// 404 right now, so every card links to the GitHub profile as a safe placeholder.
-// Repoint each `repo` to its real subfolder once that repo is public.
-// TODO(#7): Student-Allocation card pending a real description + stack from the owner
-// (repo is private; README not readable).
+// TODO(links): the Africahackon_Cohort-IV- repo + per-project subfolders, and the
+// Student-Allocation repo, are private / 404 right now, so every card links to the
+// GitHub profile as a safe placeholder. Once public, repoint cards 1–6 to their real
+// subfolders and #7 to https://github.com/PolycarpMulu/Student-Allocation.
 const GH = "https://github.com/PolycarpMulu";
 
 export const projects: Project[] = [
@@ -67,6 +66,15 @@ export const projects: Project[] = [
     tags: ["Web Security", "API", "Burp", "SQLMap"],
     category: "Web · API",
     status: "Team · Squad 1",
+    repo: GH,
+  },
+  {
+    title: "Student-Allocation",
+    slug: "student-allocation",
+    description:
+      "Secure Flask / Next.js academic workflow platform — JWT authentication, RBAC, audit logging, document management, and project-supervision automation.",
+    tags: ["Software Development", "Flask", "Next.js", "JWT", "RBAC"],
+    category: "Software Dev",
     repo: GH,
   },
 ];
