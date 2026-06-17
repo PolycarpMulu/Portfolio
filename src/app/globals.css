@@ -33,6 +33,24 @@ body { background: var(--color-void); color: var(--color-fg); }
   50%      { opacity: 1; }
 }
 
+/* Subtle gradient hairline between consecutive sections (PART 4) — adapted to our
+   markup: bare <section> elements inside <main>. The first section (hero) and About
+   (which follows the credibility strip's border) are naturally skipped. */
+main > section + section::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-bottom: 3rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 156, 0.2) 30%,
+    rgba(0, 255, 156, 0.5) 50%,
+    rgba(0, 255, 156, 0.2) 70%,
+    transparent
+  );
+}
+
 /* Honor reduced-motion globally — protects the circuit + terminal animations */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -542,4 +542,10 @@ portrait exactly (`transition-shadow duration-300 hover:border-accent
 hover:shadow-[0_0_30px_-6px_var(--color-accent)]`). (4) Scrollbar hidden
 (`scrollbar-width:none` + `::-webkit-scrollbar` hidden); per-loop clear kept.
 
+**PART 4 — section dividers:** one subtle accent gradient hairline between sections via
+`main > section + section::before` in globals.css (adapted to our bare-`<section>`
+markup). Hero is skipped (first); About is skipped but already separated by the
+credibility strip's border — so dividers fall before Skills / Projects / Experience /
+Contact. Subtle, no background textures.
+
 ---
