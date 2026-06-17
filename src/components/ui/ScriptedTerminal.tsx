@@ -169,7 +169,7 @@ export default function ScriptedTerminal() {
       </div>
       <div
         ref={boxRef}
-        className="h-56 overflow-y-auto p-4 font-mono text-xs leading-relaxed sm:text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="h-44 overflow-y-auto p-4 font-mono text-xs leading-relaxed sm:h-56 sm:text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {lines.map((l, i) => (
           <div key={i} className={`whitespace-pre-wrap break-words ${COLOR[l.cls]}`}>

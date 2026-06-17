@@ -79,7 +79,7 @@ export default function Navbar() {
           aria-label="Toggle navigation menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="font-mono text-sm text-muted transition-colors hover:text-accent md:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center font-mono text-sm text-muted transition-colors hover:text-accent md:hidden"
         >
           {open ? "[ x ]" : "[ ≡ ]"}
         </button>
@@ -93,7 +93,7 @@ export default function Navbar() {
               <a
                 href={`#${item.id}`}
                 onClick={() => setOpen(false)}
-                className={linkClass(item.id)}
+                className={`${linkClass(item.id)} flex min-h-[44px] items-center`}
                 aria-current={active === item.id ? "true" : undefined}
               >
                 {item.label}

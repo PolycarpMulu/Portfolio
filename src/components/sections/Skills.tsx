@@ -7,7 +7,7 @@ import { focusAreas, skillGroups } from "@/data/skills";
 // list. Numeric radar intentionally omitted (STEP 6).
 export default function Skills() {
   return (
-    <section id="skills" className="py-24">
+    <section id="skills" className="py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionLabel>{"// SKILLS"}</SectionLabel>
         <h2 className="mt-4 font-display text-3xl font-bold text-fg sm:text-4xl">

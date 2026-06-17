@@ -558,4 +558,13 @@ rgba(26,26,46,0.90))`, no `background-attachment: fixed`): **Contact** = cyber-c
 clashes with overlaid text; left available as a content element if wanted. Source
 `Background/` dir gitignored (originals not committed).
 
+**PART 6 — responsive pass:** audited 320/375/414/768/1024/1280/1440 (headless).
+**0 horizontal overflow at every width.** Fixes: terminal scroll height `h-44 sm:h-56`
+(reduced on mobile); section padding `py-16 sm:py-24` across all sections; hamburger now
+a 44×44 tap target; mobile nav links `min-h-[44px]`. Verified: hero two-column at md+ /
+single stacked with full-width terminal below the text on mobile; hamburger toggles +
+desktop links at md+; Projects + Focus Areas cards reflow 1→2→3; skill/tag pills wrap;
+terminal text stays inside the panel with the scrollbar hidden; background sections stay
+readable at all sizes (no fixed-attachment).
+
 ---

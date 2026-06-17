@@ -3,7 +3,7 @@ import { bio } from "@/data/bio";
 
 export default function About() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionLabel>{"// ABOUT"}</SectionLabel>
 

@@ -7,7 +7,7 @@ export default function CTFAchievements() {
   if (ctf.length === 0) return null;
 
   return (
-    <section id="ctf" className="py-24">
+    <section id="ctf" className="py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionLabel>{"// CTF"}</SectionLabel>
         <h2 className="mt-4 font-display text-3xl font-bold text-fg sm:text-4xl">
