@@ -531,4 +531,15 @@ so per owner decision every card links to the GitHub **profile** for now.
 - **TODO:** add the 7th project (`Student-Allocation`) once the owner supplies a real
   description + stack (repo private; README not readable).
 
+**PART 3 — terminal redesign:** modified the existing `ScriptedTerminal` (kept its two
+scenes + closer + reduced-motion). (1) Hero is now a two-column grid — left text stack
+(eyebrow, name, headline, rotating role, subline, buttons, **socials**), right the
+terminal, vertically centred; stacks on mobile. (2) Frame: `rounded-xl`, overflow hidden,
+`border-accent/30`, `shadow-[0 0 40px rgba(0,255,156,0.08), 0 20px 60px rgba(0,0,0,0.5)]`,
+`backdrop-blur-[8px]`, semi-transparent bg; title bar = three window dots (#ff5f57 /
+#ffbd2e / #28ca41), `root@qu35t ~`, + a live scene label. (3) Hover mirrors the About
+portrait exactly (`transition-shadow duration-300 hover:border-accent
+hover:shadow-[0_0_30px_-6px_var(--color-accent)]`). (4) Scrollbar hidden
+(`scrollbar-width:none` + `::-webkit-scrollbar` hidden); per-loop clear kept.
+
 ---

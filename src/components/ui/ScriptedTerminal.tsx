@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Decorative, auto-typing terminal that loops through two illustrative scenes.
-// Targets are deliberately fictional (ACME\jdoe, 10.10.10.x, acme.local); the tools
-// are real. Not a real engagement. Marked aria-hidden (decorative, no focus trap).
+// Decorative, auto-typing terminal that loops through two illustrative scenes + a
+// closer. Targets are deliberately fictional (ACME\jdoe, 10.10.10.x, acme.local);
+// tools are real. Not a real engagement. aria-hidden (decorative, no focus trap).
 
 type Cls = "prompt" | "ok" | "warn" | "err" | "high" | "dim";
 interface Line {
@@ -42,6 +42,17 @@ const CLOSER: Line[] = [
   { text: "qu35t — Researcher · Engineer · Pentester · Red Team", cls: "high" },
 ];
 
+interface Scene {
+  label: string;
+  lines: Line[];
+}
+const SCENES: Scene[] = [
+  { label: "hardware · re", lines: SCENE_A },
+  { label: "red team", lines: SCENE_B },
+  { label: "whoami", lines: CLOSER },
+];
+const ALL_STATIC: Line[] = [...SCENE_A, ...SCENE_B, ...CLOSER];
+
 const COLOR: Record<Cls, string> = {
   prompt: "text-accent",
   ok: "text-accent",
@@ -51,29 +62,13 @@ const COLOR: Record<Cls, string> = {
   dim: "text-muted",
 };
 
-type Action =
-  | { type: "line"; line: Line }
-  | { type: "pause"; ms: number }
-  | { type: "clear" };
-
-const SEQUENCE: Action[] = [
-  ...SCENE_A.map((line): Action => ({ type: "line", line })),
-  { type: "pause", ms: 3000 },
-  ...SCENE_B.map((line): Action => ({ type: "line", line })),
-  { type: "pause", ms: 3000 },
-  ...CLOSER.map((line): Action => ({ type: "line", line })),
-  { type: "pause", ms: 3000 },
-  { type: "clear" },
-];
-
-const ALL_STATIC: Line[] = [...SCENE_A, ...SCENE_B, ...CLOSER];
-
 export default function ScriptedTerminal() {
   const [lines, setLines] = useState<Line[]>([]);
+  const [label, setLabel] = useState(SCENES[0].label);
   const rootRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  // Keep the newest line in view (instant; no smooth scroll).
+  // Keep the newest line in view (instant).
   useEffect(() => {
     const box = boxRef.current;
     if (box) box.scrollTop = box.scrollHeight;
@@ -85,15 +80,16 @@ export default function ScriptedTerminal() {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReduced) {
-      // Render every line statically — no typing, no loop.
-      const id = setTimeout(() => setLines(ALL_STATIC), 0);
+      const id = setTimeout(() => {
+        setLabel("log");
+        setLines(ALL_STATIC);
+      }, 0);
       return () => clearTimeout(id);
     }
 
     let cancelled = false;
     let visible = true;
     const timers = new Set<ReturnType<typeof setTimeout>>();
-
     const sleep = (ms: number) =>
       new Promise<void>((resolve) => {
         const t = setTimeout(() => {
@@ -119,17 +115,15 @@ export default function ScriptedTerminal() {
 
     const run = async () => {
       while (!cancelled) {
-        for (const action of SEQUENCE) {
+        for (const scene of SCENES) {
           if (cancelled) return;
           await waitVisible();
           if (cancelled) return;
-
-          if (action.type === "clear") {
-            setLines([]);
-          } else if (action.type === "pause") {
-            await sleep(action.ms);
-          } else {
-            const { line } = action;
+          setLabel(scene.label);
+          for (const line of scene.lines) {
+            if (cancelled) return;
+            await waitVisible();
+            if (cancelled) return;
             setLines((prev) => [...prev, { text: "", cls: line.cls }]);
             for (let i = 1; i <= line.text.length; i++) {
               if (cancelled) return;
@@ -142,9 +136,11 @@ export default function ScriptedTerminal() {
               });
               await sleep(16);
             }
-            await sleep(line.text.startsWith("$") ? 280 : 360);
+            await sleep(line.text.startsWith("$") ? 260 : 340);
           }
+          await sleep(3000);
         }
+        setLines([]); // per-loop clear so lines never accumulate
       }
     };
     void run();
@@ -160,21 +156,24 @@ export default function ScriptedTerminal() {
     <div
       ref={rootRef}
       aria-hidden="true"
-      className="max-w-xl overflow-hidden border border-border-dim bg-surface/60"
+      className="w-full max-w-xl overflow-hidden rounded-xl border border-accent/30 bg-surface/60 shadow-[0_0_40px_rgba(0,255,156,0.08),0_20px_60px_rgba(0,0,0,0.5)] backdrop-blur-[8px] transition-shadow duration-300 hover:border-accent hover:shadow-[0_0_30px_-6px_var(--color-accent)]"
     >
-      <div className="flex items-center gap-2 border-b border-border-dim px-4 py-2">
-        <span className="h-3 w-3 rounded-full bg-danger" />
-        <span className="h-3 w-3 rounded-full bg-warn" />
-        <span className="h-3 w-3 rounded-full bg-accent" />
-        <span className="ml-2 font-mono text-xs text-muted">root@qu35t — lab</span>
+      <div className="flex items-center gap-2 border-b border-accent/20 px-4 py-2.5">
+        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+        <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+        <span className="h-3 w-3 rounded-full bg-[#28ca41]" />
+        <span className="ml-2 font-mono text-xs text-muted">root@qu35t ~</span>
+        <span className="ml-auto font-mono text-[10px] uppercase tracking-widest text-muted/70">
+          {label}
+        </span>
       </div>
       <div
         ref={boxRef}
-        className="h-52 overflow-y-auto p-4 font-mono text-xs leading-relaxed sm:text-sm"
+        className="h-56 overflow-y-auto p-4 font-mono text-xs leading-relaxed sm:text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {lines.map((l, i) => (
           <div key={i} className={`whitespace-pre-wrap break-words ${COLOR[l.cls]}`}>
-            {l.text || " "}
+            {l.text || " "}
           </div>
         ))}
       </div>
