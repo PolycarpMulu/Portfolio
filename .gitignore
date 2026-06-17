@@ -42,3 +42,6 @@ next-env.d.ts
 
 # branding source images + scratch previews (derived assets live in src/app + public/assets)
 /attachments/
+
+# background source images (optimized .webp versions live in public/bg/)
+/Background/

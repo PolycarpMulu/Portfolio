@@ -43,7 +43,7 @@ export default function Experience() {
   const certs = experience.filter((e) => e.kind === "certification");
 
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="section-bg-hacker py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionLabel>{"// CAREER"}</SectionLabel>
         <h2 className="mt-4 font-display text-3xl font-bold text-fg sm:text-4xl">

@@ -548,4 +548,14 @@ markup). Hero is skipped (first); About is skipped but already separated by the
 credibility strip's border — so dividers fall before Skills / Projects / Experience /
 Contact. Subtle, no background textures.
 
+**PART 5 — background images:** viewed all three. IMG_9239 (circuit/shields) +
+IMG_9240 (hooded hacker / matrix) are dark scene textures → optimized to WebP in
+`public/bg/` (cyber-circuit.webp 48 KB, hacker-matrix.webp 79 KB). Applied as section
+backgrounds under a heavy dark overlay (`linear-gradient(rgba(10,10,15,0.93),
+rgba(26,26,46,0.90))`, no `background-attachment: fixed`): **Contact** = cyber-circuit,
+**Experience** = hacker-matrix. Two sections only; text verified fully readable.
+**IMG_9241** (centered faceless figure) NOT used as a background — its centered subject
+clashes with overlaid text; left available as a content element if wanted. Source
+`Background/` dir gitignored (originals not committed).
+
 ---

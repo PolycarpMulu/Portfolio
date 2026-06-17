@@ -51,6 +51,19 @@ main > section + section::before {
   );
 }
 
+/* Section background images under a heavy dark overlay (PART 5). Text stays fully
+   readable; no background-attachment: fixed (janks on mobile). */
+.section-bg-cyber {
+  background:
+    linear-gradient(rgba(10, 10, 15, 0.93), rgba(26, 26, 46, 0.9)),
+    url("/bg/cyber-circuit.webp") center / cover no-repeat;
+}
+.section-bg-hacker {
+  background:
+    linear-gradient(rgba(10, 10, 15, 0.93), rgba(26, 26, 46, 0.9)),
+    url("/bg/hacker-matrix.webp") center / cover no-repeat;
+}
+
 /* Honor reduced-motion globally — protects the circuit + terminal animations */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

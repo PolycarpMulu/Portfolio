@@ -21,7 +21,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="section-bg-cyber py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionLabel>{"// CONTACT"}</SectionLabel>
         <h2 className="mt-4 font-display text-3xl font-bold text-fg sm:text-4xl">
