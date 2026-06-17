@@ -1,57 +1,41 @@
 import type { Experience } from "@/types";
 
-// Security-relevant experience, education, certifications (PORTFOLIO_CONTENT §3–§4),
-// in the documented order. Curation rule: excludes the 2014 cashier / 2015 accounts
-// intern roles. Also omits the two items the source marks OPTIONAL + non-security
-// (Jays Pyrotechnics software dev; Mount Kenya University business degree).
-// Dates intentionally omitted — entries show title + org + description only.
+// Professional Experience — minimal: title + "Org · Location" only (no dates, no
+// bullets). Casing: "AfricaHackon" consistent site-wide; "Virtually Testing
+// Foundation"; "The Book Bunk"; "The Technical University of Kenya".
 export const experience: Experience[] = [
   // — Experience —
   {
-    title: "Cyber Security Engineer",
-    org: "AfricaHackon",
-    period: "",
-    kind: "work",
-    points: [
-      "Cybersecurity engineering and knowledge-sharing within East Africa's premier hacking community.",
-    ],
-  },
-  {
     title: "Penetration Tester Intern",
     org: "Virtually Testing Foundation",
-    period: "",
+    location: "Remote",
     kind: "work",
-    points: ["Hands-on penetration testing across web and network targets."],
   },
   {
     title: "Digital Life Associate",
     org: "The Book Bunk",
-    period: "",
+    location: "Nairobi, Kenya",
     kind: "work",
-    points: [
-      "Digital systems and technology work supporting public library restoration.",
-    ],
   },
 
   // — Education —
   {
-    title: "Computer Technology / Computer Systems Technology",
+    title: "Diploma in Computer Technology",
     org: "The Technical University of Kenya",
-    period: "",
+    location: "Nairobi, Kenya",
     kind: "education",
   },
   {
-    title: "Cyber Security Engineer (Training)",
+    title: "AH200 Cohort 4 — Cybersecurity Training",
     org: "AfricaHackon",
-    period: "",
+    location: "Nairobi, Kenya",
     kind: "education",
   },
 
   // — Certifications —
   {
-    title: "AfricaHackOn Cyber Security Swara",
+    title: "Cyber Security Swara",
     org: "AfricaHackon",
-    period: "",
     kind: "certification",
   },
 ];

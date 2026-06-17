@@ -82,9 +82,7 @@ export interface Experience {
   title: string;
   /** organisation / institution */
   org: string;
-  /** human-readable period, e.g. "Oct 2021 – Dec 2021" or "2016 – 2021" */
-  period: string;
-  /** optional location */
+  /** optional location, shown as "Org · Location" */
   location?: string;
   /** kind, used to label/group the timeline */
   kind: "work" | "education" | "certification";

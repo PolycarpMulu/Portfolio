@@ -26,16 +26,10 @@ function TimelineGroup({
             <p className="font-display text-base font-bold text-fg">
               {item.title}
             </p>
-            <p className="font-mono text-sm text-accent">{item.org}</p>
-            {item.points && item.points.length > 0 && (
-              <div className="mt-2 space-y-1">
-                {item.points.map((p, j) => (
-                  <p key={j} className="text-sm text-muted">
-                    {p}
-                  </p>
-                ))}
-              </div>
-            )}
+            <p className="mt-0.5 font-mono text-sm">
+              <span className="text-accent">{item.org}</span>
+              {item.location && <span className="text-muted"> · {item.location}</span>}
+            </p>
           </li>
         ))}
       </ol>
@@ -51,9 +45,9 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionLabel>{"// EXPERIENCE"}</SectionLabel>
+        <SectionLabel>{"// CAREER"}</SectionLabel>
         <h2 className="mt-4 font-display text-3xl font-bold text-fg sm:text-4xl">
-          Experience, Education &amp; Certifications
+          Professional Experience
         </h2>
         <div className="mt-10 max-w-3xl">
           <TimelineGroup title="Experience" items={work} />

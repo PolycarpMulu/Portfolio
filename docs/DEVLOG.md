@@ -504,3 +504,21 @@ lines, stable); zero console errors. `npm run build` + `npm run lint` clean.
 **Key commands:** `npm run build` · `npm run lint`
 
 ---
+
+## 2026-06-12 — MASTER WORKORDER
+
+**PART 0 — preflight:** live reality check (headless). Deploy healthy — git in sync
+(`origin/main` @ 4acfac8), no unpushed commits; corrections 1–6 confirmed live; only
+Projects still the single placeholder (built in PART 2). No deploy fix needed.
+
+**PART 1 — Professional Experience rewrite:** `Experience.tsx` eyebrow → `// CAREER`,
+H2 → "Professional Experience"; entries show title + "Org · Location" only (no dates,
+bullets, or notes); kept the 3 groups + timeline styling + `#experience`. `experience.ts`
+reduced to: Pen Tester Intern @ Virtually Testing Foundation · Remote; Digital Life
+Associate @ The Book Bunk · Nairobi; Diploma in Computer Technology @ The Technical
+University of Kenya · Nairobi; AH200 Cohort 4 — Cybersecurity Training @ AfricaHackon ·
+Nairobi; Cyber Security Swara @ AfricaHackon. Removed the AfricaHackon engineer job,
+Jays 2018, Business Management diploma, in-progress certs. `Experience.period` made
+optional in the type.
+
+---
