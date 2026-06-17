@@ -521,4 +521,14 @@ Nairobi; Cyber Security Swara @ AfricaHackon. Removed the AfricaHackon engineer 
 Jays 2018, Business Management diploma, in-progress certs. `Experience.period` made
 optional in the type.
 
+**PART 2 — real projects:** replaced the single `C1rcu1t⤬ Portfolio` placeholder with
+the six documented projects (Beetlebug Android CTF, Network Forensics & IDS, Base64
+Password Encoder, "The Gentlemen" Ransomware Detection, crAPI API Security, Vulnerable
+Bank Web/API Pentest), keeping ProjectCard styling + tag pills. **Access note:**
+`Africahackon_Cohort-IV-` (and its subfolders) + `Student-Allocation` are private/404,
+so per owner decision every card links to the GitHub **profile** for now.
+- **TODO:** repoint each card to its real subfolder once `Africahackon_Cohort-IV-` is public.
+- **TODO:** add the 7th project (`Student-Allocation`) once the owner supplies a real
+  description + stack (repo private; README not readable).
+
 ---

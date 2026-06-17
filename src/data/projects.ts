@@ -1,22 +1,72 @@
 import type { Project } from "@/types";
 
-// Real projects. Source: docs/PORTFOLIO_CONTENT.md §5.
+// Real projects (docs/PORTFOLIO_MASTER_WORKORDER.md PART 2).
 //
-// NOTE: §5 also lists five lab projects by name only — CXD-1, HSC Lab
-// Infrastructure, Web App Pentest Suite, Malware Analyst Isolated User,
-// AH200 Lab Setup. Their descriptions/tags live in "BUILD_SPEC §4C" (a v1 doc not
-// present in this repo). DECISION (STEP 5 review): exclude the five rather than
-// fabricate copy — ship Projects with the real portfolio entry only for now.
+// TODO(links): the Africahackon_Cohort-IV- repo + per-project subfolders are private /
+// 404 right now, so every card links to the GitHub profile as a safe placeholder.
+// Repoint each `repo` to its real subfolder once that repo is public.
+// TODO(#7): Student-Allocation card pending a real description + stack from the owner
+// (repo is private; README not readable).
+const GH = "https://github.com/PolycarpMulu";
+
 export const projects: Project[] = [
   {
-    title: "C1rcu1t⤬ Portfolio",
-    slug: "circuit-portfolio",
+    title: "Beetlebug Android CTF",
+    slug: "beetlebug-android-ctf",
     description:
-      "Static Next.js + Tailwind v4 portfolio, built milestone-by-milestone with a full development log (docs/DEVLOG.md).",
-    tags: ["nextjs", "tailwind", "netlify"],
-    category: "Web · Scripting",
-    status: "active",
-    repo: "https://github.com/PolycarpMulu/Portfolio",
-    year: 2026,
+      "Mobile app penetration test across ~10 vulnerability classes — hardcoded secrets, insecure storage, WebView abuse, SQLi, Firebase misconfig, exported components, logging leaks, clipboard, biometric/deeplink bypass, and binary patching.",
+    tags: ["Mobile Security", "RE", "JADX", "ADB", "APKTool"],
+    category: "Mobile · CTF",
+    status: "Team · Squad 1",
+    repo: GH,
+  },
+  {
+    title: "Network Forensics & IDS",
+    slug: "network-forensics-ids",
+    description:
+      "Keylogger PCAP forensics in Wireshark plus Snort detection rules (ICMP exfiltration, Nmap SYN scans).",
+    tags: ["Network Security", "DFIR", "Wireshark", "Snort"],
+    category: "Network · DFIR",
+    repo: GH,
+  },
+  {
+    title: "Base64 Password Encoder",
+    slug: "base64-password-encoder",
+    description:
+      "Portable Bash password-encoding tool with base64 / openssl / python3 fallbacks and robust error handling.",
+    tags: ["Tooling", "Automation", "Bash"],
+    category: "Tooling",
+    status: "Solo",
+    repo: GH,
+  },
+  {
+    title: `"The Gentlemen" Ransomware — Threat Assessment & Detection Engineering`,
+    slug: "gentlemen-ransomware-detection",
+    description:
+      "Full detection stack for 'The Gentlemen' ransomware — Sysmon, Velociraptor VQL, Suricata, Splunk, and Sigma rules mapped to MITRE ATT&CK with an F3EAD workflow.",
+    tags: ["Threat Intel", "Detection Eng", "Blue Team"],
+    category: "Detection Eng",
+    status: "Team",
+    repo: GH,
+  },
+  {
+    title: "crAPI — API Security Assessment",
+    slug: "crapi-api-security",
+    description:
+      "OWASP API Security Top 10 assessment of crAPI (BOLA, broken auth, mass assignment, SSRF, JWT forgery) — CRITICAL risk posture.",
+    tags: ["API Security", "Web", "Burp Suite"],
+    category: "API Security",
+    status: "Solo",
+    repo: GH,
+  },
+  {
+    title: "Vulnerable Bank — Web & API Pentest",
+    slug: "vulnerable-bank-pentest",
+    description:
+      "Web + API penetration test of a vulnerable bank — SQLi, weak OTP, insecure JWT / privilege escalation, mass assignment, file upload, and business-logic abuse leading to full account/admin compromise.",
+    tags: ["Web Security", "API", "Burp", "SQLMap"],
+    category: "Web · API",
+    status: "Team · Squad 1",
+    repo: GH,
   },
 ];
